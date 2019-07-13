@@ -18,15 +18,17 @@ A RESTful application built in Python 3.7 and Django 2.2
 ## Requesting the API
 * *GET* `localhost:8000/api/movie/list_movies`
 * *POST* `localhost:8000/api/movie/create_movie`
+* *PUT* `localhost:8000/api/movie/<id>/edit_movie`
+* *DELETE* `localhost:8000/api/movie/<id>/delete_movie`
 
-For POST method the test data is like:
+For POST and PUT methods the test data is like following:
 ```javascript
 {
 	"title": "The Shining",
 	"director": "Stanley Kubrick",
 	"writer": "same",
 	"stars": "4",
-	"summary": "Mad Mad at A Hotel",
+	"summary": "Mad Man at A Hotel",
 	"year": "1976",
 	"category": "thriller",
 	"username": "serpalmop"

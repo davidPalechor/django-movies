@@ -42,10 +42,11 @@ class MovieListAPIView(APIView):
 
     def get(self, request):
         data = []
-        queryset = Movie.objects.all()
+        queryset = Movie.objects.filter(deleted=False)
 
         for movie in queryset:
             data.append({
+                'id': movie.id,
                 'title': movie.title,
                 'director': movie.director,
                 'writer': movie.writer,
@@ -58,3 +59,45 @@ class MovieListAPIView(APIView):
             })
 
         return JsonResponse({'data': data})
+
+
+class MovieUpdateAPIView(APIView):
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def put(self, request, *args, **kwargs):
+        movie_id = kwargs.get('id', '')
+
+        json_body = json.loads(request.body)
+
+        if Movie.objects.filter(id=movie_id).exists() or movie_id != '':
+            movie = Movie.objects.get(id=movie_id)
+            movie.title = json_body['title']
+            movie.director = json_body['director']
+            movie.writer = json_body['writer']
+            movie.stars = json_body['stars']
+            movie.summary = json_body['summary']
+            movie.year = json_body['year']
+            movie.category = json_body['category']
+            movie.save()
+
+            return HttpResponse('success', status=200)
+        return HttpResponse('Object not found', status=404)
+
+
+class MovieDeleteAPIView(APIView):
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        movie_id = kwargs.get('id', '')
+
+        if Movie.objects.filter(id=movie_id).exists() or movie_id != '':
+            movie = Movie.objects.get(id=movie_id)
+            movie.deleted = True
+            movie.save()
+
+            return HttpResponse('success', status=200)
+        return HttpResponse('Object not found', status=404)

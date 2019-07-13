@@ -22,10 +22,10 @@ class MovieListView(ListView):
 
 class MovieCreateView(LoginRequiredMixin, CreateView):
     form_class = MovieCreationForm
-    login_url = reverse_lazy('user:list_movies')
+    login_url = reverse_lazy('user:login')
     model = Movie
     redirect_field_name = 'next'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('movie:list_movies')
     template_name = 'create_movie.html'
 
     def form_valid(self, form):
@@ -55,6 +55,7 @@ class MovieEditView(LoginRequiredMixin, UpdateView):
 class MovieDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('movie:list_movies')
     model = Movie
+    login_url = reverse_lazy('user:login')
     redirect_field_name = 'next'
     template_name = 'movie_confirm_delete.html'
     context_object_name = 'movie'
