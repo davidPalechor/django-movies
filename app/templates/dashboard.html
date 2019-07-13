@@ -1,0 +1,15 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<section class="dashboard">
+{% if user.first_name %}
+    <h1>Welcome {{ user.first_name }}</h1>
+{% else %}
+    <h1>Welcome {{ user.username }}</h1>
+{% endif %}
+<a href="{% url 'movie:create_movie' %}">Create Movie Entrance</a>
+<a href="{% url 'movie:list_movies' %}">List All Movies</a>
+</section>
+{% endblock %}

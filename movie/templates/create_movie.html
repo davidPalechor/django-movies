@@ -1,0 +1,43 @@
+{% extends 'layout/base.html' %}
+{% load static widget_tweaks %}
+
+{% block title %}Create Movie{% endblock %}
+
+{% block content %}
+<section class="create-movie">
+    <h1>Create New Movie</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="form-group">
+            <label class="required" for="id_title">{{ form.title.label }}</label>
+            {% render_field form.title %}
+        </div>
+        <div class="form-group">
+            <label class="required" for="id_director">{{ form.director.label }}</label>
+            {% render_field form.director %}
+        </div>
+        <div class="form-group">
+            <label class="required" for="id_writer">{{ form.writer.label }}</label>
+            {% render_field form.writer %}
+        </div>
+        <div class="form-group">
+            <label class="required" for="id_summary">{{ form.summary.label }}</label>
+            {% render_field form.summary %}
+        </div>
+        <div class="form-group">
+            <label class="required" for="id_category">{{ form.category.label }}</label>
+            {% render_field form.category %}
+        </div>
+        <div class="form-group">
+            <label class="required" for="id_year">{{ form.year.label }}</label>
+            {% render_field form.year %}
+        </div>
+        <div class="form-group">
+            <label class="required" for="id_year">{{ form.stars.label }}</label>
+            {% render_field form.stars %}
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</section>
+{% endblock %}

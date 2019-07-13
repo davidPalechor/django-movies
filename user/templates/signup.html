@@ -1,0 +1,27 @@
+{% extends 'layout/base.html' %}
+{% load static widget_tweaks %}
+
+{% block title %}Signup{% endblock %}
+{% block content %}
+<section class="signup">
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label class="required" for="id_username">{{form.username.label}}</label>
+        {% render_field form.username%}
+        {% render_field form.errors.username %}
+    </div>
+    <div class="form-group">
+        <label class="required" for="id_password1">{{form.password1.label}}</label>
+        {% render_field form.password1 type="password" %}
+        {% render_field form.errors.password1 %}
+    </div>
+    <div class="form-group">
+        <label class="required" for="id_password2">{{form.password2.label}}</label>
+        {% render_field form.password2 type="password" %}
+        {% render_field form.errors.password2 %}
+    </div>
+    <button type="submit">Submit</button>
+</form>
+</section>
+{% endblock %}

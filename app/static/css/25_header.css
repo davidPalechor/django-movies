@@ -1,0 +1,36 @@
+.nav {
+    background: #333;
+    margin-bottom: 15px;
+}
+
+.nav_container {
+    max-width: 100%;
+    margin: auto;
+}
+
+.nav__link {
+    padding: 8px 20px;
+    display: inline-block;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+}
+
+.nav__link:hover {
+    color: #333;
+    background: white;
+}
+
+@media(min-width: 960px){
+    .nav_container{
+        max-width: 900px;
+    }
+}
+
+@media(min-width: 1200px){
+    .nav_container{
+        max-width: 1100px;
+    }
+}

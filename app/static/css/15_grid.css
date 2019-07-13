@@ -1,0 +1,18 @@
+.container {
+    width: 100%;
+    margin: auto;
+}
+
+@media (min-width: 960px){
+    .container {
+        max-width: 850px;
+    }
+}
+
+@media (min-width: 1200px){
+    .container {
+        max-width: 1040px;
+    }
+}
+
+

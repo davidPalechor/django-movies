@@ -1,0 +1,20 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block title %}List Movies{% endblock %}
+
+{% block content %}
+<section class="list-movie">
+    <h1>List of Movies</h1>
+    {% for movie in object_list %}
+    <div>
+        <h2 class="movie__title">{{ movie }}</h2>
+        <div class="movie__content">
+            <p>{{ movie.summary }}</p>
+            <span>posted: {{ movie.created_at }} by {{ movie.user }}</span>
+            <a href="{% url 'movie:edit_movie' movie.slug %}">edit</a> <a href="{% url 'movie:delete_movie' movie.slug %}">delete</a>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}

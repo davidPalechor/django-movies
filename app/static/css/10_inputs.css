@@ -1,0 +1,9 @@
+input {
+    width: 250px;
+}
+
+select {
+    width: 250px;
+    background: white;
+    font-size: 1rem;
+}
