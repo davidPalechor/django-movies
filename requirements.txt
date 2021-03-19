@@ -4,5 +4,5 @@ django-compressor==2.2
 django-dynamic-fixture==2.0.0
 django-test-plus==1.1.1
 django-widget-tweaks==1.4.3
-djangorestframework==3.9.4
+djangorestframework==3.11.2
 psycopg2-binary==2.7.7
